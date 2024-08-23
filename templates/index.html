@@ -5,11 +5,49 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-</head>
-<body>
-  <h1>This is your main HTML file</h1>
-  <form action="/process" method="POST">
-      <button type="submit">Click Me</button>
-  </form>
+</head> 
+<style type="text/css">
+    .title {
+        text-align: center;
+        background-color: #333;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .body {
+      background-color: #3f3f3f;
+    }
+    .input {
+      color: #333;
+      width: 300px;
+      height: 30px;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      margin: 0.5rem;
+    }
+    .button {
+      color: #333;
+      width: 300px;
+      height: 30px;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      margin: 0.5rem;
+    }
+</style>
+<body class="body">
+  <div class="container">
+    <h1 class="title">QR Code Generator</h1>
+    <p>Submit a URL or text to be encoded into a QR Code</p>
+    <form action="/process" method="POST">
+        <button class="button" type="submit">Click Me</button>
+        <input class="input"> type="text" url="Text or URL here" <input/>
+    </form>
+  </div>
 </body>
 </html>
