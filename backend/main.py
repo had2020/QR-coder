@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from qrcode import generate_qrcode
+from generatecode import generate_qrcode
 
 app = Flask(__name__)
 
@@ -19,4 +19,4 @@ def process():
 
 
 if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0', port=5000) # change to ip and port for non-debug
+  app.run(debug=True, host='0.0.0.0', port=5001) # change to ip and port for non-debug
