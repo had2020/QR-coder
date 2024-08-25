@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, send_file, request, abort
 from flask_cors import CORS
 from generatecode import generate_qrcode
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -9,15 +10,14 @@ CORS(app)
 def index():
   return render_template('index.html')
 
-
 @app.route('/process', methods=['POST', 'GET'])
 def process():
-  #Python code to execute here
-  generate_qrcode("https://www.example.com/")
-  print("button has been clicked!")
+  url = request.form['url']
+  image = str(generate_qrcode(url))
+  #Todo change this to send you to main page or something
   result = "Button clicked!"
-  return render_template('result.html', result=result)
-
+  return send_file(image), render_template('result.html', result=result)
+  
 
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0', port=5001) # change to ip and port for non-debug

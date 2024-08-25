@@ -7,9 +7,26 @@
   <title>Document</title>
 </head> 
 <style type="text/css">
+        :root {
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      font-weight: 400;
+
+      color-scheme: light dark;
+      color: rgba(255, 255, 255, 0.87);
+      background-color: #242424;
+
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      align-items: center;
+      text-align: center;
+    }
     .title {
         text-align: center;
-        background-color: aliceblue;
+        background-color: #444;
+        margin-bottom: 10px;
     }
     .container {
         display: flex;
@@ -18,9 +35,10 @@
         justify-content: center;
         height: 100vh;
         border-radius: 5px; 
-        background-color: #333; 
+        background-color: #242424; 
         border: 1px solid #838383;  
         margin: 10px auto; 
+        text-align: center;
     }
     .body {
       background-color: #333;
@@ -33,6 +51,10 @@
       border: none;
       margin: 0.5rem;
       background-color: #444;
+      display: block; 
+      width: 200px; 
+      margin: 0 auto; 
+      margin-top: 20px;
     }
     .button {
       width: 300px;
@@ -42,15 +64,28 @@
       border: none;
       margin: 0.5rem;
       background-color: #444;
+      text-align: center;
+      display: block; 
+      width: 200px; 
+      margin: 0 auto; 
+      margin-top: 20px;
+    }
+    .p {
+      text-align: center;
+      color: black;
+
     }
 </style>
+<script>
+  console.log("from JS");
+</script>
 <body class="body">
   <div class="container">
     <h1 class="title">QR Code Generator</h1>
-    <p>Submit a URL or text to be encoded into a QR Code</p>
+    <p>Submit a URL or text to be made into a QR Code</p>
     <form action="/process" method="POST">
-        <button class="button" type="submit">Click Me</button>
-        <input class="input"> type="text" url="Text or URL here" <input/>
+        <input class="input" placeholder="Text or URL here" type="text" id="url" name="url"></input>
+        <button class="button" type="submit">Make QR Code</button>
     </form>
   </div>
 </body>
