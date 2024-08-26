@@ -19,8 +19,8 @@ def generate_qrcode(url):
     time_obj = str(datetime.datetime.now())
     stringged_url = str(url)
     image_folder = "qr-code-pngs/"
-    image_name = stringged_url + time_obj
-    image_path = image_folder + image_name + ".png"
+    #image_name = stringged_url + time_obj to long names but sometimes works
+    image_path = image_folder + time_obj + ".png"
 
     # create image for code
     img = qr.make_image(fill='black', back_color='white')
