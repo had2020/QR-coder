@@ -3,6 +3,8 @@ from flask_cors import CORS
 from generatecode import generate_qrcode
 import os
 
+deletion_due = None
+
 app = Flask(__name__)
 CORS(app)
 
@@ -10,13 +12,17 @@ CORS(app)
 def index():
   return render_template('index.html')
 
+def delete_file(deletion_due):
+  os.remove(deletion_due)
+
 @app.route('/process', methods=['POST', 'GET'])
 def process():
   url = request.form['url']
   image = str(generate_qrcode(url))
   #Todo change this to send you to main page or something
+  deletion_due = image
   result = "Button clicked!"
-  return send_file(image), render_template('result.html', result=result)
+  return send_file(image), render_template('result.html', result=result), delete_file(deletion_due)
   
 
 if __name__ == '__main__':
