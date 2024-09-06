@@ -52,7 +52,8 @@ def delete_file(deletion_due):
 def process():
   url = request.form['url']
   image_path = str(generate_qrcode(url))
-  return send_from_directory('static/images', image_path)
+  print(image_path)
+  return send_from_directory('qr-code-pngs/', image_path)#, delete_file(image_path) TODO
 
 if __name__ == '__main__':
   #app.run(debug=True, host='0.0.0.0', port=5001) # change to ip and port for non-debug
