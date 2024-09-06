@@ -1,14 +1,17 @@
-from flask import Flask, render_template, send_file, request, abort
+from flask import Flask, render_template, request, abort, send_from_directory
 from flask_cors import CORS
 import os
 import qrcode
 import datetime
-
+import webview
 
 deletion_due = None
 
 app = Flask(__name__)
 CORS(app)
+
+# specify window 
+window = webview.create_window('QR Coder', app)
 
 # URL == string
 
@@ -48,12 +51,9 @@ def delete_file(deletion_due):
 @app.route('/process', methods=['POST', 'GET'])
 def process():
   url = request.form['url']
-  image = str(generate_qrcode(url))
-  #Todo change this to send you to main page or something
-  deletion_due = image
-  result = "Button clicked!"
-  return send_file(image), render_template('result.html', result=result), delete_file(deletion_due)
-  
+  image_path = str(generate_qrcode(url))
+  return send_from_directory('static/images', image_path)
 
 if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0', port=5001) # change to ip and port for non-debug
+  #app.run(debug=True, host='0.0.0.0', port=5001) # change to ip and port for non-debug
+  webview.start()
