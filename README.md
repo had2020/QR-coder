@@ -2,4 +2,4 @@ To Host this website change hosting address and ports for required server ports,
 Install pip requirements.txt
 Then run main.py to host the website
 To export exe use pyinstaller main.py
-pyinstaller --name myflaskapp --onefile app.py
+or pyinstaller --name myflaskapp --onefile main.py
